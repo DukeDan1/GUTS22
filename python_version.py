@@ -8,7 +8,13 @@ from newsweather import news, weather
 import requests
 
 url = 'http://api.openweathermap.org/geo/1.0/direct?q=%7Bcity name},{state code},{countrycode}&limit={limit}&appid={31b68aa2df700b29c325496f14e75f06}"
-
+x = requests.get(f'https://guts22.dukedan.uk/api/weather?city=%7Bcity%7D%27) # 'city' contains city name, e.g. Glasgow
+print(x.status_code) # will be 200 if request was successful. If code starts with 5 or 4 an error has occurred.
+weather_data = x.json()
+if weather_data['success'] == True:
+  print(weather_data['data'])
+else:
+  print(weather_data['reason'])
 
 
 def weather(country, location):
